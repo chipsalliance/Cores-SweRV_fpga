@@ -70,7 +70,7 @@ Setup:
 ------
 1. Set the SWERV_EH1_FPGA_PATH environment variable to repository path.
         
-        $ cd /path/to/swerv_eh1_fpga 
+        $ cd /path/to/Cores-SweRV_fpga 
         $ export SWERV_EH1_FPGA_PATH=`pwd`
         
 2. Copy `Cores-SweRV` folder to the hardware directory
