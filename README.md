@@ -4,7 +4,7 @@ This repository contains design files for implementing a
 SweRV<sup>TM</sup> 1.4 based processor complex in a commercially available
 FPGA board, the Nexys4 DDR from Digilent Inc.   The repository also
 contains example software and support files for loading the software
-into the design, and debugging the software.The previous version can be found in [1.0](https://github.com/chipsalliance/Cores-SweRV/tree/1.0)
+into the design, and debugging the software.The previous version can be found in [1.0.](https://github.com/chipsalliance/Cores-SweRV_fpga/tree/1.0)
   
 
 ## License
