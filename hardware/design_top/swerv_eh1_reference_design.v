@@ -40,6 +40,7 @@ module swerv_eh1_reference_design(
 	wire 		nmi_int;
 	wire [31:0] rv_nmi_vec_w = `RV_NMI_VEC;
 	wire [31:1] nmi_vec = rv_nmi_vec_w[31:1];//31'h0;
+    wire [31:1] jtag_id = 31'h0;
 
    	wire [63:0] trace_rv_i_insn_ip;
    	wire [63:0] trace_rv_i_address_ip;
@@ -247,13 +248,11 @@ module swerv_eh1_reference_design(
    	wire dec_tlu_perfcnt1;
    	wire dec_tlu_perfcnt2;
    	wire dec_tlu_perfcnt3;
+    wire mpc_debug_halt_req = 1'b0;
+	wire mpc_debug_run_req = 1'b0;
+    wire mpc_reset_run_req = 1'b1;
 
-   	// ports added by the soc team	       
-//   	wire 			     jtag_tck = 1'b0; // JTAG clk
-//   	wire 			     jtag_tms = 1'b0; // JTAG TMS  
-//   	wire 			     jtag_tdi = 1'b0; // JTAG tdi
-//   	wire 			     jtag_trst_n = 1'b0; // JTAG Reset
-//   	wire 		     	 jtag_tdo; // JTAG TDO
+
 
    	wire 			     i_cpu_halt_req = 1'b0; // Async halt req to CPU
    	wire 		     	 o_cpu_halt_ack; // core response to halt
@@ -311,6 +310,7 @@ module swerv_eh1_reference_design(
 		.rst_vec(rst_vec),
 		.nmi_int(nmi_int),
 		.nmi_vec(nmi_vec),
+        .jtag_id(jtag_id),
 
 		.trace_rv_i_insn_ip(trace_rv_i_insn_ip),
 		.trace_rv_i_address_ip(trace_rv_i_address_ip),
@@ -521,6 +521,19 @@ module swerv_eh1_reference_design(
   		.jtag_trst_n(jtag_trst_n), // JTAG Reset
  	 	.jtag_tdo(jtag_tdo), // JTAG TDO
   
+ 	 	.mpc_debug_halt_req(mpc_debug_halt_req), // Async halt request
+
+		.mpc_debug_run_req(mpc_debug_run_req), // Async run request
+
+ 	 	.mpc_reset_run_req(mpc_reset_run_req), // Run/halt after reset
+
+ 	 	.mpc_debug_halt_ack(), // Halt ack
+
+ 	 	.mpc_debug_run_ack(), // Run ack
+
+ 	 	.debug_brkpt_status(), // debug breakpoint
+
+ 
 		.i_cpu_halt_req(i_cpu_halt_req), // Async halt req to CPU
   		.o_cpu_halt_ack(o_cpu_halt_ack), // core response to halt
   		.o_cpu_halt_status(o_cpu_halt_status), // 1'b1 indicates core is halted
