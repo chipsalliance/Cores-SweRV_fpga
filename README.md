@@ -1,10 +1,11 @@
-# FPGA Reference Design for the SweRV RISC-V Core<sup>TM</sup> from Western Digital
+# FPGA Reference Design for the SweRV RISC-V Core<sup>TM</sup> 1.4 from Western Digital
 
 This repository contains design files for implementing a
-Swerv<sup>TM</sup>-based processor complex in a commercially available
-FPGA board, the Nexus4 DDR from Digilent Inc.   The repository also
+SweRV<sup>TM</sup> 1.4 based processor complex in a commercially available
+FPGA board, the Nexys4 DDR from Digilent Inc.   The repository also
 contains example software and support files for loading the software
-into the design, and debugging the software.  
+into the design, and debugging the software.The previous version can be found in [1.0](https://github.com/chipsalliance/Cores-SweRV/tree/1.0)
+  
 
 ## License
 
@@ -72,8 +73,8 @@ Setup:
         $ cd /path/to/swerv_eh1_fpga 
         $ export SWERV_EH1_FPGA_PATH=`pwd`
         
-2. Copy `swerv_eh1` folder to the hardware directory
-    (path:`${SWERV_EH1_FPGA_PATH}/hardware`) and set RV_ROOT to point
+2. Copy `Cores-SweRV` folder to the hardware directory
+    (path:`${SWERV_EH1_FPGA_PATH}/hardware`), rename it `swerv_eh1` and set RV_ROOT to point
     `swerv_eh1` folder:  
     `$ export RV_ROOT=$SWERV_EH1_FPGA_PATH/hardware/swerv_eh1` 
 
@@ -81,7 +82,7 @@ Setup:
    settings with `reset_vec=0x0`.  
    Go to configs folder (path: `$RV_ROOT/configs`) and run the
    `swerv.config` script as below:  
-    `$ ./swerv.config -set reset_vec=0x0`
+    `$ ./swerv.config -set reset_vec=0x0 -unset=icache_enable`
 
 4. Create FPGA project using the vivado tcl project script file
    `nexys4ddr_refprj.tcl` inside `project/script` folder.  
