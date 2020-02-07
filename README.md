@@ -107,8 +107,29 @@ Setup:
    to the host using micro usb cable to download the bit file and UART
    printfs. 
 
-7. Connect the Olimex GDB connector with the Nexys4 DDR board to
-   download and debug software applcations. 
+7. Connect the Olimex JTAG adapter with SweRV JTAG pins on the Nexys4 
+   DDR board, so that software applcations can be downloaded and 
+   debugged.
+
+   Location of SweRV JTAG pins is depicted below (assuming the 
+   constraints file `nexys.xdc` has not been modified).
+
+| JD PMOD connector on Nexys A7 | SweRV JTAG signals |
+|-------------------------------|--------------------|
+| JD, pin 1                     | TDO                |
+| JD, pin 2                     | TRST_n             |
+| JD, pin 3                     | TCK                |
+| JD, pin 4                     | (no connection)    |
+| JD, pin 5                     | GND                |
+| JD, pin 6                     | 3V3                |
+| JD, pin 7                     | TDI                |
+| JD, pin 8                     | TMS                |
+| JD, pin 9                     | SRST_n             |
+| JD, pin 10                    | (no connection)    |
+| JD, pin 11                    | GND                |
+| JD, pin 12                    | 3V3                |
+ 
+<img src="nexys_a7_connector_jd.png" alt="Pinout of JD connector on Digilent Nexys A7 board" width="350">
 
 8. Now, switch on the board and download the bit file using the Vivado
    Hardware Manager.  
